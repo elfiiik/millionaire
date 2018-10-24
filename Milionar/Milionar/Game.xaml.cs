@@ -17,16 +17,24 @@ using System.Windows.Threading;
 namespace Milionar
 {
     /// <summary>
-    /// Interakční logika pro MainWindow.xaml
+    /// Interakční logika pro Game.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Game : Page
     {
-        public MainWindow()
+        public Game()
         {
             InitializeComponent();
-            
-            myFrame.Navigate(new Menu(myFrame));
+            DispatcherTimer timerEnemy = new DispatcherTimer();
+            timerEnemy.Interval = TimeSpan.FromSeconds(1);
+            timerEnemy.Tick += (s, args) => Tick();
+            timerEnemy.Start();
         }
-        
+        int num = 0;
+
+        void Tick()
+        {
+            num++;
+            Counter.Content = num.ToString();
+        }
     }
 }

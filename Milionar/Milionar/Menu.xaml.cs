@@ -12,21 +12,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Windows.Threading;
 
 namespace Milionar
 {
     /// <summary>
-    /// Interakční logika pro MainWindow.xaml
+    /// Interakční logika pro Menu.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Menu : Page
     {
-        public MainWindow()
+        private Frame parentFrame;
+        public Menu()
         {
             InitializeComponent();
-            
-            myFrame.Navigate(new Menu(myFrame));
         }
-        
+        public Menu(Frame parentFrame) : this()
+        {
+            this.parentFrame = parentFrame;
+        }
     }
 }
