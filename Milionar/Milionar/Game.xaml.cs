@@ -21,6 +21,7 @@ namespace Milionar
     /// </summary>
     public partial class Game : Page
     {
+        private Frame parentFrame;
         public Game()
         {
             InitializeComponent();
@@ -29,12 +30,22 @@ namespace Milionar
             timerEnemy.Tick += (s, args) => Tick();
             timerEnemy.Start();
         }
+        public Game(Frame parentFrame) : this()
+        {
+            this.parentFrame = parentFrame;
+        }
+
         int num = 0;
 
         void Tick()
         {
             num++;
             Counter.Content = num.ToString();
+        }
+
+        private void Menu_click(object sender, RoutedEventArgs e)
+        {
+            parentFrame.Navigate(new Menu());
         }
     }
 }

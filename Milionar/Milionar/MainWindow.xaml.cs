@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
-
+using Newtonsoft.Json;
 namespace Milionar
 {
     /// <summary>
@@ -24,7 +25,25 @@ namespace Milionar
         public MainWindow()
         {
             InitializeComponent();
-            
+            JsonSerializerSettings settings = new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.All
+            };
+            List<Answers> QA = new List<Answers>();
+            QA.Add(new Answers
+            {
+                Question = "Jake je pocasi?",
+                Answer = new List<string> {"ano", "slunicko", "pekne nahovno", "prosil bych bez cibule" },
+                Good = 4
+            });
+            QA.Add(new Answers
+            {
+                Question = "Jak se máš?",
+                Answer = new List<string> { "Vážně", "mě", "to", "nezajímá" },
+                Good = 1
+            });
+            string json = JsonConvert.SerializeObject(QA, settings);
+            File.WriteAllText(@"C:\Users\admin\source\repos\millionaire\Milionar\data.json", json);
             myFrame.Navigate(new Menu(myFrame));
         }
         

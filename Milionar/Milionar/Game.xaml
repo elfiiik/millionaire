@@ -10,6 +10,8 @@
 
     <Grid>
         <Label Content="" HorizontalAlignment="Left" Margin="129,226,0,0" VerticalAlignment="Top" x:Name="Counter"/>
+        <Button Content="Menu" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="86" Height="36" Click="Menu_click"/>
+        <Label Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="259,49,0,0" Height="79" Width="241" FontSize="20" x:Name="Question"/>
 
     </Grid>
 </Page>

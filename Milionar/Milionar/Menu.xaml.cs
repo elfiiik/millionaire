@@ -29,5 +29,15 @@ namespace Milionar
         {
             this.parentFrame = parentFrame;
         }
+
+        private void Game_start(object sender, RoutedEventArgs e)
+        {
+            parentFrame.Navigate(new Game());
+        }
+
+        private void create(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
