@@ -12,10 +12,11 @@
         <Label Content="" HorizontalAlignment="Left" Margin="129,226,0,0" VerticalAlignment="Top" x:Name="Counter"/>
         <Button Content="Menu" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="86" Height="36" Click="Menu_click"/>
         <Label Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="259,49,0,0" Height="79" Width="241" FontSize="20" x:Name="Question"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="234,290,0,0" VerticalAlignment="Top" Width="75" x:Name="Answer1"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="444,290,0,0" VerticalAlignment="Top" Width="75" x:Name="Answer2"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="234,347,0,0" VerticalAlignment="Top" Width="75" x:Name="Answer3"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="444,347,0,0" VerticalAlignment="Top" Width="75" x:Name="Answer4"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="234,290,0,0" VerticalAlignment="Top" Width="75" x:Name="Answer1" Click="Answer_click"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="444,290,0,0" VerticalAlignment="Top" Width="75" x:Name="Answer2" Click="Answer_click"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="234,347,0,0" VerticalAlignment="Top" Width="75" x:Name="Answer3" Click="Answer_click"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="444,347,0,0" VerticalAlignment="Top" Width="75" x:Name="Answer4" Click="Answer_click"/>
+        <Label Content="Score" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="634,133,0,0" Height="44" Width="144" FontSize="20" x:Name="Score"/>
 
     </Grid>
 </Page>

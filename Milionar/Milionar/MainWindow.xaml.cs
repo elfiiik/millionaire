@@ -34,13 +34,13 @@ namespace Milionar
             {
                 Question = "Jake je pocasi?",
                 Answer = new List<string> {"ano", "slunicko", "pekne nahovno", "prosil bych bez cibule" },
-                Good = 4
+                Good = 3
             });
             QA.Add(new Answers
             {
                 Question = "Jak se máš?",
                 Answer = new List<string> { "Vážně", "mě", "to", "nezajímá" },
-                Good = 1
+                Good = 0
             });
             string json = JsonConvert.SerializeObject(QA, settings);
             File.WriteAllText(@"C:\Users\1\source\repos\millionaire\Milionar\data.json", json);

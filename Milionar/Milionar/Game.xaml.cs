@@ -22,8 +22,12 @@ namespace Milionar
     /// </summary>
     public partial class Game : Page
     {
+        private int score = 0;
         private int num = 30;
         private Frame parentFrame;
+        private List<Answers> RandomQA;
+
+
         public Game()
         {
             InitializeComponent();
@@ -33,7 +37,7 @@ namespace Milionar
             timerEnemy.Tick += (s, args) => Tick();
             timerEnemy.Start();
 
-            List<Answers> RandomQA = ChooseQA.Choose();
+            RandomQA = ChooseQA.Choose();
             foreach (Answers data in RandomQA)
             {
                 Question.Content = data.Question;
@@ -58,6 +62,19 @@ namespace Milionar
         private void Menu_click(object sender, RoutedEventArgs e)
         {
             parentFrame.Navigate(new Menu());
+        }
+
+        private void Answer_click(object sender, RoutedEventArgs e)
+        {
+            foreach (Answers data in RandomQA)
+            {
+                if (this.Content.Equals(data.Answer[data.Good]))
+                {
+                    score++;
+                    Score.Content = score;
+                }
+            }
+            
         }
     }
 }
