@@ -28,20 +28,20 @@ namespace Milionar
             {
                 TypeNameHandling = TypeNameHandling.All
             };
-            List<Answers> QA = JsonConvert.DeserializeObject<List<Answers>>(File.ReadAllText(@"C:\Users\1\source\repos\millionaire\Milionar\data.json"), settings);
+            List<Answers> QA = JsonConvert.DeserializeObject<List<Answers>>(File.ReadAllText(@"C:\Users\admin\source\repos\millionaire\Milionar\data.json"), settings);
             Random rnd = new Random();
             int Random = rnd.Next(0, QA.Count);
 
 
             foreach (int ints in Answered)
             {
-                if (ints == Random) { Choose = false; }        
+                if (ints == Random) { Choose = false; }
             }
 
             if (Choose)
             {
                 Answered.Add(Random);
-                for (int i=0; i<QA.Count;i++)
+                for (int i = 0; i < QA.Count; i++)
                 {
                     if (Random == i)
                     {
@@ -53,6 +53,10 @@ namespace Milionar
                         });
                     }
                 }
+            }
+            else if (Answered.Count == QA.Count)
+            {
+
             }
             return rndAnswer;
         }

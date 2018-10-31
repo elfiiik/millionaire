@@ -43,7 +43,7 @@ namespace Milionar
                 Good = 0
             });
             string json = JsonConvert.SerializeObject(QA, settings);
-            File.WriteAllText(@"C:\Users\1\source\repos\millionaire\Milionar\data.json", json);
+            File.WriteAllText(@"C:\Users\admin\source\repos\millionaire\Milionar\data.json", json);
             myFrame.Navigate(new Menu(myFrame));
         }
         

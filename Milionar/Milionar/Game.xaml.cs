@@ -26,37 +26,34 @@ namespace Milionar
         private int num = 30;
         private Frame parentFrame;
         private List<Answers> RandomQA;
+        AnswerChoose ChooseQA = new AnswerChoose();
 
 
         public Game()
         {
             InitializeComponent();
-            AnswerChoose ChooseQA = new AnswerChoose();
+
             DispatcherTimer timerEnemy = new DispatcherTimer();
             timerEnemy.Interval = TimeSpan.FromSeconds(1);
             timerEnemy.Tick += (s, args) => Tick();
             timerEnemy.Start();
 
-            RandomQA = ChooseQA.Choose();
-            foreach (Answers data in RandomQA)
-            {
-                Question.Content = data.Question;
-                Answer1.Content = data.Answer[0];
-                Answer2.Content = data.Answer[1];
-                Answer3.Content = data.Answer[2];
-                Answer4.Content = data.Answer[3];
-            }
+            Change_QA();
         }
         public Game(Frame parentFrame) : this()
         {
             this.parentFrame = parentFrame;
         }
-   
+
 
         void Tick()
         {
             num--;
             Counter.Content = num.ToString();
+            if (num < 0)
+            {
+                parentFrame.Navigate(new endGame());
+            }
         }
 
         private void Menu_click(object sender, RoutedEventArgs e)
@@ -68,13 +65,48 @@ namespace Milionar
         {
             foreach (Answers data in RandomQA)
             {
-                if (this.Content.Equals(data.Answer[data.Good]))
+                if ((sender as Button).Content.Equals(data.Answer[data.Good]))
                 {
                     score++;
                     Score.Content = score;
+                    Change_QA();
+                    num = 30;
                 }
             }
-            
+
         }
+
+        private void Change_QA()
+        {
+            JsonSerializerSettings settings = new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.All
+            };
+            List<Answers> QA = JsonConvert.DeserializeObject<List<Answers>>(File.ReadAllText(@"C:\Users\admin\source\repos\millionaire\Milionar\data.json"), settings);
+            if (QA.Count == ChooseQA.Answered.Count)
+            {
+                Question.Content = "Done";
+            }
+            else
+            {
+                RandomQA = ChooseQA.Choose();
+                while (RandomQA.Count < 1)
+                {
+                    RandomQA = ChooseQA.Choose();
+                }
+                foreach (Answers data1 in RandomQA)
+                {
+                    Question.Content = data1.Question;
+                    Answer1.Content = data1.Answer[0];
+                    Answer2.Content = data1.Answer[1];
+                    Answer3.Content = data1.Answer[2];
+                    Answer4.Content = data1.Answer[3];
+                }
+            } 
+        }
+
+
+
+
     }
 }
