@@ -42,8 +42,21 @@ namespace Milionar
                 Answer = new List<string> { "Vážně", "mě", "to", "nezajímá" },
                 Good = 0
             });
+            QA.Add(new Answers
+            {
+                Question = "wow",
+                Answer = new List<string> { "k", "k", "k", "k" },
+                Good = 0
+            });
+            QA.Add(new Answers
+            {
+                Question = "jees",
+                Answer = new List<string> { "okuj", "jtzj", "toop", "weee" },
+                Good = 0
+            });
             string json = JsonConvert.SerializeObject(QA, settings);
-            File.WriteAllText(@"C:\Users\admin\source\repos\millionaire\Milionar\data.json", json);
+            //File.WriteAllText(@"C:\Users\admin\source\repos\millionaire\Milionar\data.json", json);
+            File.WriteAllText(@"C:\Users\1\source\repos\millionaire\Milionar\data.json", json);
             myFrame.Navigate(new Menu(myFrame));
         }
         

@@ -22,8 +22,8 @@ namespace Milionar
     /// </summary>
     public partial class Game : Page
     {
-        private int score = 0;
-        private int num = 30;
+        public int score = 0;
+        private int num = 5;
         private Frame parentFrame;
         private List<Answers> RandomQA;
         AnswerChoose ChooseQA = new AnswerChoose();
@@ -52,13 +52,15 @@ namespace Milionar
             Counter.Content = num.ToString();
             if (num < 0)
             {
-                parentFrame.Navigate(new endGame());
+                parentFrame.Navigate(new Endgame());
             }
         }
 
         private void Menu_click(object sender, RoutedEventArgs e)
         {
-            parentFrame.Navigate(new Menu());
+            //parentFrame.Navigate(new Menu());
+
+            this.NavigationService.Navigate(new Menu(score,ChooseQA.Answered));
         }
 
         private void Answer_click(object sender, RoutedEventArgs e)
@@ -72,6 +74,10 @@ namespace Milionar
                     Change_QA();
                     num = 30;
                 }
+                else
+                {
+                    parentFrame.Navigate(new Endgame());
+                }
             }
 
         }
@@ -82,7 +88,8 @@ namespace Milionar
             {
                 TypeNameHandling = TypeNameHandling.All
             };
-            List<Answers> QA = JsonConvert.DeserializeObject<List<Answers>>(File.ReadAllText(@"C:\Users\admin\source\repos\millionaire\Milionar\data.json"), settings);
+            //List<Answers> QA = JsonConvert.DeserializeObject<List<Answers>>(File.ReadAllText(@"C:\Users\admin\source\repos\millionaire\Milionar\data.json"), settings);
+            List<Answers> QA = JsonConvert.DeserializeObject<List<Answers>>(File.ReadAllText(@"C:\Users\1\source\repos\millionaire\Milionar\data.json"), settings);
             if (QA.Count == ChooseQA.Answered.Count)
             {
                 Question.Content = "Done";

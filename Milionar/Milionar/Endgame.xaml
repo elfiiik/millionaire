@@ -9,7 +9,9 @@
       Title="Endgame">
 
     <Grid>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="292,104,0,0" VerticalAlignment="Top" Height="94" Width="195" x:Name="TextMain"/>
+        <Label HorizontalAlignment="Left" Margin="292,104,0,0" VerticalAlignment="Top" Height="94" Width="195" x:Name="TextMain">
+        Hi
+        </Label>
 
     </Grid>
 </Page>
