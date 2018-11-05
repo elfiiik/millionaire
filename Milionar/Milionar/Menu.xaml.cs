@@ -27,6 +27,7 @@ namespace Milionar
         public Menu()
         {
             InitializeComponent();
+            Save_button.IsEnabled = false;
         }
         public Menu(Frame parentFrame) : this()
         {
@@ -42,7 +43,8 @@ namespace Milionar
 
         private void Game_start(object sender, RoutedEventArgs e)
         {
-            parentFrame.Navigate(new Game());
+            //parentFrame.Navigate(new Game());
+            this.NavigationService.Navigate(new Game());
         }
 
         private void create(object sender, RoutedEventArgs e)
@@ -52,7 +54,7 @@ namespace Milionar
 
         private void NavigationService_LoadCompleted(object sender, NavigationEventArgs e)
         {
-            string str = (string)e.ExtraData;
+            string str = (string)e.ExtraData; 
         }
 
         private void Save(object sender, RoutedEventArgs e)
@@ -74,6 +76,9 @@ namespace Milionar
         void Menu_Loaded(object sender, RoutedEventArgs e)
         {
             RightText.Content = score;
+            if (score > 0)
+            { Save_button.IsEnabled = true; }
+            else { Save_button.IsEnabled = false; }
         }
 
         private void Load(object sender, RoutedEventArgs e)

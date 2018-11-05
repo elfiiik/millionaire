@@ -63,7 +63,8 @@ namespace Milionar
             Counter.Content = num.ToString();
             if (num < 0)
             {
-                parentFrame.Navigate(new Endgame());
+                //parentFrame.Navigate(new Endgame());
+                this.NavigationService.Navigate(new Endgame());
             }
         }
 
@@ -87,7 +88,8 @@ namespace Milionar
                 }
                 else
                 {
-                    parentFrame.Navigate(new Endgame());
+                    //parentFrame.Navigate(new Endgame());
+                    this.NavigationService.Navigate(new Endgame());
                 }
             }
 

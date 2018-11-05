@@ -10,7 +10,7 @@
 
     <Grid>
         <Button Content="Start" HorizontalAlignment="Left" Margin="325,77,0,0" VerticalAlignment="Top" Width="157" Height="58" Click="Game_start"/>
-        <Button Content="Save" HorizontalAlignment="Left" Margin="325,196,0,0" VerticalAlignment="Top" Width="157" Height="58" Click="Save"/>
+        <Button Content="Save" HorizontalAlignment="Left" Margin="325,196,0,0" VerticalAlignment="Top" Width="157" Height="58" Click="Save" x:Name="Save_button"/>
         <Button Content="Load" HorizontalAlignment="Left" Margin="325,313,0,0" VerticalAlignment="Top" Width="157" Height="58" Click="Load"/>
         <Label Content="" HorizontalAlignment="Left" Margin="656,214,0,0" VerticalAlignment="Top" x:Name="RightText"/>
 
