@@ -21,6 +21,7 @@ namespace Milionar
     public partial class Endgame : Page
     {
         private Frame parentFrame;
+        private int score;
         public Endgame()
         {
             InitializeComponent();
@@ -29,6 +30,16 @@ namespace Milionar
         public Endgame(Frame parentFrame) : this()
         {
             this.parentFrame = parentFrame;
+        }
+
+        public Endgame(int val) : this()
+        {
+            score = val;
+            Loaded += new RoutedEventHandler(Endgame_Loaded);
+        }
+
+        void Endgame_Loaded(object sender, RoutedEventArgs e)
+        {
         }
 
         private void Menu_click(object sender, RoutedEventArgs e)

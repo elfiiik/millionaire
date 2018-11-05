@@ -64,7 +64,7 @@ namespace Milionar
             if (num < 0)
             {
                 //parentFrame.Navigate(new Endgame());
-                this.NavigationService.Navigate(new Endgame());
+                this.NavigationService.Navigate(new Endgame(score));
             }
         }
 
@@ -89,7 +89,7 @@ namespace Milionar
                 else
                 {
                     //parentFrame.Navigate(new Endgame());
-                    this.NavigationService.Navigate(new Endgame());
+                    this.NavigationService.Navigate(new Endgame(score));
                 }
             }
 

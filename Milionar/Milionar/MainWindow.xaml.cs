@@ -45,7 +45,7 @@ namespace Milionar
             QA.Add(new Answers
             {
                 Question = "wow",
-                Answer = new List<string> { "k", "k", "k", "k" },
+                Answer = new List<string> { "k1", "k2", "k3", "k4" },
                 Good = 0
             });
             QA.Add(new Answers
