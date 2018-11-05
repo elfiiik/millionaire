@@ -26,6 +26,7 @@ namespace Milionar
         private int num = 5;
         private Frame parentFrame;
         private List<Answers> RandomQA;
+        public List<object> LoadedData;
         AnswerChoose ChooseQA = new AnswerChoose();
 
 
@@ -43,6 +44,16 @@ namespace Milionar
         public Game(Frame parentFrame) : this()
         {
             this.parentFrame = parentFrame;
+        }
+
+        public Game(List<object> ldata) : this()
+        {
+            LoadedData = ldata;
+            score = Convert.ToInt32(ldata[0]);
+            Loaded += new RoutedEventHandler(Game_Loaded);
+        }
+        void Game_Loaded(object sender, RoutedEventArgs e)
+        {
         }
 
 
@@ -88,8 +99,8 @@ namespace Milionar
             {
                 TypeNameHandling = TypeNameHandling.All
             };
-            //List<Answers> QA = JsonConvert.DeserializeObject<List<Answers>>(File.ReadAllText(@"C:\Users\admin\source\repos\millionaire\Milionar\data.json"), settings);
-            List<Answers> QA = JsonConvert.DeserializeObject<List<Answers>>(File.ReadAllText(@"C:\Users\1\source\repos\millionaire\Milionar\data.json"), settings);
+            List<Answers> QA = JsonConvert.DeserializeObject<List<Answers>>(File.ReadAllText(@"C:\Users\admin\source\repos\millionaire2\Milionar\data.json"), settings);
+            //List<Answers> QA = JsonConvert.DeserializeObject<List<Answers>>(File.ReadAllText(@"C:\Users\1\source\repos\millionaire\Milionar\data.json"), settings);
             if (QA.Count == ChooseQA.Answered.Count)
             {
                 Question.Content = "Done";

@@ -53,7 +53,6 @@ namespace Milionar
         private void NavigationService_LoadCompleted(object sender, NavigationEventArgs e)
         {
             string str = (string)e.ExtraData;
-
         }
 
         private void Save(object sender, RoutedEventArgs e)
@@ -64,9 +63,11 @@ namespace Milionar
                 {
                     TypeNameHandling = TypeNameHandling.All
                 };
-                List<object> SaveData = new List<object> {score,Answered};
-                string json = JsonConvert.SerializeObject(SaveData, settings); 
-                File.WriteAllText(@"C:\Users\1\source\repos\millionaire\Milionar\save.json", json);
+                List<object> SaveData = new List<object> { (Int32)score,Answered};
+                string json = JsonConvert.SerializeObject(SaveData, settings);
+                File.WriteAllText(@"C:\Users\admin\source\repos\millionaire2\Milionar\save.json", json);
+                //File.WriteAllText(@"C:\Users\1\source\repos\millionaire\Milionar\save.json", json);
+                RightText.Content = "saved";
             }
             
         }
@@ -81,8 +82,10 @@ namespace Milionar
             {
                 TypeNameHandling = TypeNameHandling.All
             };
-            List<object> LoadedData = JsonConvert.DeserializeObject<List<object>>(File.ReadAllText(@"C:\Users\1\source\repos\millionaire\Milionar\save.json"), settings);
+            List<object> LoadedData = JsonConvert.DeserializeObject<List<object>>(File.ReadAllText(@"C:\Users\admin\source\repos\millionaire2\Milionar\save.json"), settings);
+            //List<object> LoadedData = JsonConvert.DeserializeObject<List<object>>(File.ReadAllText(@"C:\Users\1\source\repos\millionaire\Milionar\save.json"), settings);
             //List obsahuje Score a Answered, zajistit přepsání listu v AnswerChoose a score v Game
+            this.NavigationService.Navigate(new Game(LoadedData));
         }
     }
 }
