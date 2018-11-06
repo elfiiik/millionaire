@@ -13,30 +13,28 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Windows.Threading;
 using Newtonsoft.Json;
 namespace Milionar
 {
     /// <summary>
-    /// Interakční logika pro Endgame.xaml
+    /// Interakční logika pro Wingame.xaml
     /// </summary>
-    public partial class Endgame : Page
+    public partial class Wingame : Page
     {
         private Frame parentFrame;
         private int score;
-        Highscore highscore = new Highscore();
-        List<Highscore> highscores = new List<Highscore>();
-        public Endgame()
+
+        public Wingame()
         {
             InitializeComponent();
         }
 
-        public Endgame(Frame parentFrame) : this()
+        public Wingame(Frame parentFrame) : this()
         {
             this.parentFrame = parentFrame;
         }
 
-        public Endgame(int val) : this()
+        public Wingame(int val) : this()
         {
             score = val;
             Loaded += new RoutedEventHandler(Endgame_Loaded);
@@ -69,13 +67,14 @@ namespace Milionar
             highscores.Add(new Highscore
             {
                 Name = name,
-                Score = score+1
+                Score = score
             });
-            highscores = highscores.OrderBy(o => o.Score*-1).ToList();
+            highscores = highscores.OrderBy(o => o.Score * -1).ToList();
             string json2 = JsonConvert.SerializeObject(highscores, settings);
             File.WriteAllText(@"C:\Users\admin\source\repos\millionaire2\Milionar\highscores.json", json2);
             Namesubmit.IsEnabled = false;
         }
+
         private void Exit_click(object sender, RoutedEventArgs e)
         {
             System.Windows.Application.Current.Shutdown();

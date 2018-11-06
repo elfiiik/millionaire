@@ -23,6 +23,10 @@ namespace Milionar
     {
         public int score = 0;
         public List<int> Answered = new List<int>();
+        public List<bool> HelpStat = new List<bool>();
+        public bool Hel1;
+        public bool Hel2;
+        public bool Hel3;
         private Frame parentFrame;
         public Menu()
         {
@@ -34,10 +38,13 @@ namespace Milionar
             this.parentFrame = parentFrame;
         }
 
-        public Menu(int val, List<int> vals) : this()
+        public Menu(int val, List<int> vals, bool h1, bool h2, bool h3) : this()
         {
             score = val;
             Answered = vals;
+            Hel1 = h1;
+            Hel2 = h2;
+            Hel3 = h3;
             Loaded += new RoutedEventHandler(Menu_Loaded);
         }
 
@@ -65,7 +72,7 @@ namespace Milionar
                 {
                     TypeNameHandling = TypeNameHandling.All
                 };
-                List<object> SaveData = new List<object> { (Int32)score,Answered};
+                List<object> SaveData = new List<object> { (Int32)score,Answered, Hel1, Hel2, Hel3};
                 string json = JsonConvert.SerializeObject(SaveData, settings);
                 File.WriteAllText(@"C:\Users\admin\source\repos\millionaire2\Milionar\save.json", json);
                 //File.WriteAllText(@"C:\Users\1\source\repos\millionaire\Milionar\save.json", json);
