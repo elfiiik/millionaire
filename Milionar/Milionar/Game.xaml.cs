@@ -23,7 +23,7 @@ namespace Milionar
     public partial class Game : Page
     {
         public int score = 0;
-        private int num = 5;
+        private int num = 30;
         private Frame parentFrame;
         private List<Answers> RandomQA;
         public List<object> LoadedData;
